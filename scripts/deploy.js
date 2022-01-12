@@ -11,6 +11,11 @@ async function main() {
   const token = await Token.deploy();
   await token.deployed();
   console.log("Token deployed to:," + token.address);
+
+  const TestToken = await hre.ethers.getContractFactory("Token");
+  const testToken = await TestToken.deploy();
+  await testToken.deployed();
+  console.log("TestToken deployed to:," + testToken.address);
 }
 
 main()
