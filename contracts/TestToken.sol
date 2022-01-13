@@ -7,15 +7,15 @@ pragma solidity ^0.8.4;
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Burnable.sol";
 
-
 contract TestToken is ERC20, ERC20Burnable {
     address public minter;
     address private owner;
 
     event MinterChanged(address indexed from, address to);
 
-    constructor() payable ERC20("TestToken", "TST") {
+    constructor() payable ERC20("TestToken", "TSTest") {
         owner = msg.sender;
+        _mint(msg.sender, 100000000 * 10 ** uint(decimals()));
     }
 
     function passMinterRole(address newMinter) public returns (bool) {
