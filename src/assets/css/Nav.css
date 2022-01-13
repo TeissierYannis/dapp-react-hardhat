@@ -1,0 +1,21 @@
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1rem;
+}
+
+nav > a {
+  color: #e5e5e5;
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-right: 1rem;
+  margin-left: 1rem;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+nav > a:hover {
+  color: #fff;
+  border-bottom: 1px solid #fff;
+}
