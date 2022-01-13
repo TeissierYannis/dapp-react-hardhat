@@ -2,12 +2,9 @@ import {useState} from "react";
 import {ethers} from "ethers";
 
 import '../assets/css/DAppTest.css';
-import Greeter from '../artifacts/contracts/Greeter.sol/Greeter.json';
-import Token from '../artifacts/contracts/TestToken.sol/TestToken.json';
 import Nav from "../components/Nav";
 
-const greeterAddress = "0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9"
-const tokenAddress = "0x8A791620dd6260079BF849Dc5567aDC3F2FdC318"
+import { Greeter, Token } from "../config/contracts";
 
 function DappTest() {
     const [greeting, setGreetingValue] = useState('');
@@ -24,7 +21,7 @@ function DappTest() {
         if (typeof window.ethereum !== 'undefined') {
             const [account] = await window.ethereum.request({method: 'eth_requestAccounts'})
             const provider = new ethers.providers.Web3Provider(window.ethereum)
-            const contract = new ethers.Contract(tokenAddress, Token.abi, provider)
+            const contract = new ethers.Contract(Token.address, Token.contract.abi, provider)
             const balance = await contract.balanceOf(account)
             console.log("Balance : ", balance.toString())
             setBalance(balance)
@@ -37,7 +34,7 @@ function DappTest() {
             await requestAccount()
             const provider = new ethers.providers.Web3Provider(window.ethereum)
             const signer = provider.getSigner()
-            const contract = new ethers.Contract(tokenAddress, Token.abi, signer)
+            const contract = new ethers.Contract(Token.address, Token.contract.abi, signer)
             const transaction = await contract.transfer(userAccount, amount)
             await transaction.wait()
 
@@ -49,7 +46,7 @@ function DappTest() {
     async function fetchGreeting() {
         if (typeof window.ethereum !== 'undefined') {
             const provider = new ethers.providers.Web3Provider(window.ethereum);
-            const contract = new ethers.Contract(greeterAddress, Greeter.abi, provider);
+            const contract = new ethers.Contract(Greeter.address, Greeter.contract.abi, provider);
 
             try {
                 const data = await contract.greet()
@@ -68,13 +65,12 @@ function DappTest() {
             await requestAccount()
             const provider = new ethers.providers.Web3Provider(window.ethereum)
             const signer = provider.getSigner()
-            const contract = new ethers.Contract(greeterAddress, Greeter.abi, signer)
+            const contract = new ethers.Contract(Greeter.address, Greeter.contract.abi, signer)
             const transaction = await contract.setGreeting(greeting)
             setGreetingValue('')
             await transaction.wait()
             await fetchGreeting()
         }
-
     }
 
     return (

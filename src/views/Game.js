@@ -5,31 +5,34 @@ import React from "react";
 
 class Game extends React.Component {
 
-    // get children from Nav
-
-    state = {
-        children: null
-    }
-
     constructor(props) {
         super(props);
+        this.state = {
+            isAlreadyOpen: false
+        }
+    }
+
+    isAlreadyOpen = () => {
+        this.setState({
+            isAlreadyOpen: true
+        })
     }
 
     render() {
         return (
             <div className="App">
                 <header className="App-header">
-                    <Nav ref={(nav) => {
-                        this.children = nav
-                    }}/>
+                    <Nav/>
                 </header>
 
                 <div className="gameContainer">
-                    <div className="chestContainer">
-                        <AnimatedChest/>
-                    </div>
+                    {!this.state.isAlreadyOpen ?
+                        <div className="chestContainer">
+                            <AnimatedChest isAlreadyOpen={this.isAlreadyOpen}/>
+                        </div>
+                        : null
+                    }
                 </div>
-
             </div>
         );
     }

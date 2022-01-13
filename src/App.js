@@ -1,18 +1,27 @@
+import React from "react";
+import {BrowserRouter, Route} from "react-router-dom";
+import {Routes} from "react-router";
+
 import './assets/css/App.css';
-import Nav from "./components/Nav";
 
+import DappTest from "./views/DappTest";
+import Game from "./views/Game";
+import { AppContextProvider } from "./Context/AppContext";
 
-function App() {
+class App extends React.Component {
 
-  return (
-    <div className="App">
-      <header className="App-header">
-        <Nav />
-
-        <h1>App :)</h1>
-      </header>
-    </div>
-  );
+    render() {
+        return (
+            <AppContextProvider>
+                <BrowserRouter>
+                    <Routes>
+                        <Route path="/" element={<DappTest/>}/>
+                        <Route path="/game" element={<Game/>}/>
+                    </Routes>
+                </BrowserRouter>
+            </AppContextProvider>
+        );
+    }
 }
 
 export default App;

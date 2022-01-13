@@ -1,14 +1,33 @@
 import '../assets/css/AnimatedChest.css';
 import React from "react";
+import {ethers} from "ethers";
+import {AppContext} from "../Context/AppContext";
+
+import {Character } from "../config/contracts";
 
 class AnimatedChest extends React.Component {
 
     state = {}
+    static contextType = AppContext;
 
     constructor(props) {
         super(props);
         this.state = {
             isOpen: false,
+        }
+    }
+
+    async componentDidMount() {
+        if (typeof window.ethereum !== 'undefined') {
+            const [account] = await window.ethereum.request({method: 'eth_requestAccounts'})
+            const provider = new ethers.providers.Web3Provider(window.ethereum)
+            const contract = new ethers.Contract(Character.address, Character.contract.abi, provider)
+            const balance = await contract.balanceOf(account)
+
+            if (balance > 0) {
+                this.setState({isOpen: true})
+                this.props.isAlreadyOpen()
+            }
         }
     }
 
@@ -20,12 +39,33 @@ class AnimatedChest extends React.Component {
 
     render() {
 
-        const toggleChest = (e) => {
-            if (!this.state.isOpen) {
-                this.setState({isOpen: true});
+        const sleep = (milliseconds) => {
+            return new Promise(resolve => setTimeout(resolve, milliseconds))
+        }
+
+        const transferCharacter = async () => {
+            if (typeof window.ethereum !== 'undefined') {
+                const provider = new ethers.providers.Web3Provider(window.ethereum)
+                const signer = provider.getSigner()
+                const contract = new ethers.Contract(Character.address, Character.contract.abi, signer)
+                console.log(this.context)
+                const transaction = await contract.mint(this.context.account.address, 1)
+                await transaction.wait()
+
+                console.log(`1 Character successfully sent to ${this.context.address}`)
+                this.props.isAlreadyOpen()
             }
         }
 
+        const toggleChest = async (e) => {
+            e.preventDefault();
+            if (!this.state.isOpen) {
+                this.setState({isOpen: true});
+            }
+            sleep(2000).then(() => {
+                transferCharacter()
+            })
+        }
         return (
             <div className="chest" onClick={toggleChest}>
                 <div className="chest__top">
@@ -65,7 +105,6 @@ class AnimatedChest extends React.Component {
             </div>
         );
     }
-
 }
 
 export default AnimatedChest;
