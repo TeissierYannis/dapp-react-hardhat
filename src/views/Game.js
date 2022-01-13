@@ -1,23 +1,38 @@
-import '../assets/css/App.css';
+import '../assets/css/Game.css';
 import Nav from "../components/Nav";
+import AnimatedChest from "../components/AnimatedChest";
+import React from "react";
 
+class Game extends React.Component {
 
-function Game() {
+    // get children from Nav
 
-    return (
-        <div className="App">
-            <header className="App-header">
-                <Nav />
+    state = {
+        children: null
+    }
 
-                <h1>Game</h1>
-            </header>
+    constructor(props) {
+        super(props);
+    }
 
-            <div>
-                <h1>Base</h1>
+    render() {
+        return (
+            <div className="App">
+                <header className="App-header">
+                    <Nav ref={(nav) => {
+                        this.children = nav
+                    }}/>
+                </header>
+
+                <div className="gameContainer">
+                    <div className="chestContainer">
+                        <AnimatedChest/>
+                    </div>
+                </div>
+
             </div>
-
-        </div>
-    );
+        );
+    }
 }
 
 export default Game;

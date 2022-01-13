@@ -1,9 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter,
+import {
+    BrowserRouter,
     Route
 } from "react-router-dom";
-import { Routes } from 'react-router';
+import {Routes} from 'react-router';
 
 import './index.css';
 import App from './App';
@@ -13,13 +14,15 @@ import Game from "./views/Game";
 
 const rootElement = document.getElementById('root')
 ReactDOM.render(
-  <BrowserRouter>
-    <Routes>
-      <Route path="/" element={<App />} />
-      <Route path="/dapp" element={<DappTest />} />
-      <Route path="/game" element={<Game />} />
-    </Routes>
-  </BrowserRouter>,
+    <React.StrictMode>
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<App/>}/>
+                <Route path="/dapp" element={<DappTest/>}/>
+                <Route path="/game" element={<Game/>}/>
+            </Routes>
+        </BrowserRouter>
+    </React.StrictMode>,
     rootElement
 );
 

@@ -7,7 +7,7 @@ import Token from '../artifacts/contracts/TestToken.sol/TestToken.json';
 import Nav from "../components/Nav";
 
 const greeterAddress = "0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9"
-const tokenAddress = "0x5FC8d32690cc91D4c39d9d3abcBD16989F875707"
+const tokenAddress = "0x8A791620dd6260079BF849Dc5567aDC3F2FdC318"
 
 function DappTest() {
     const [greeting, setGreetingValue] = useState('');

@@ -15,6 +15,38 @@ nav > a {
   border-bottom: 1px solid #e5e5e5;
 }
 
+/*
+Align div to the right and center elements
+ */
+.right-align {
+  position: absolute;
+  right: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.right-align > p {
+  font-size: 1rem;
+}
+
+.isLoggedIn {
+  width: 10px;
+  height: 10px;
+  margin: 10px;
+  border-radius: 50%;
+  background-color: #0d9e0d;
+  border-bottom: none;
+}
+
+.isLoggedOut {
+  width: 10px;
+  height: 10px;
+  margin: 10px;
+  border-radius: 50%;
+  background-color: #9e0d0d;
+  border-bottom: none;
+}
+
 nav > a:hover {
   color: #fff;
   border-bottom: 1px solid #fff;

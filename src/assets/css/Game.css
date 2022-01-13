@@ -1,0 +1,15 @@
+.gameContainer {
+    background: red;
+    width: 100%;
+    height: 90vh;
+}
+
+/** Center elements in the chest container */
+.chestContainer {
+    background: green;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
