@@ -35,6 +35,9 @@ contract Character is ERC721, Ownable {
         require(balanceOf(account) == 0, "Account already has a token");
         require(msg.sender == minter, "You are not the minter");
         uint256 tokenId = totalSupply + amount;
+
+        require(tokenId = totalSupply + 1, "Token ID must be equal to total supply");
+
         _mint(account, tokenId);
         totalSupply += amount;
     }

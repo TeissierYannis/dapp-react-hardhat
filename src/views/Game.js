@@ -2,6 +2,7 @@ import '../assets/css/Game.css';
 import Nav from "../components/Nav";
 import AnimatedChest from "../components/AnimatedChest";
 import React from "react";
+import Stats from "../components/Stats";
 
 class Game extends React.Component {
 
@@ -30,7 +31,9 @@ class Game extends React.Component {
                         <div className="chestContainer">
                             <AnimatedChest isAlreadyOpen={this.isAlreadyOpen}/>
                         </div>
-                        : null
+                        : <div className="mainContainer">
+                            <Stats/>
+                        </div>
                     }
                 </div>
             </div>

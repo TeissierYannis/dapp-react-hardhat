@@ -35,3 +35,4 @@ artifacts
 .idea
 package-lock.json
 src/artifacts
+src/assets/images/*
