@@ -24,7 +24,7 @@ class Stats extends React.Component {
             character: character,
             item: {
                 name: "knife",
-                description: "Knife",
+                description: "lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quia.",
                 image: knife,
                 bonus: {
                     life: 0,
@@ -88,6 +88,11 @@ class Stats extends React.Component {
                 </div>
                 <div className="item">
                     <img src={this.state.item.image} alt={this.state.item.description}/>
+                    <span className="item-info">
+                        <h1 className="item-title">{this.state.item.name}</h1>
+                        <br/>
+                        <p className="item-description">{this.state.item.description}</p>
+                    </span>
                 </div>
             </div>
         );

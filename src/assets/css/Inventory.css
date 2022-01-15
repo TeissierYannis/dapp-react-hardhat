@@ -1,0 +1,56 @@
+.inventoryContainer {
+    position: absolute;
+    top: 200px;
+    right: 10px;
+    width: 352px;
+    height: 30vh;
+    background-color: antiqueWhite;
+    z-index: 10;
+    border: 3px solid #443413;
+    padding: 10px;
+
+    margin-right: auto;
+    margin-left: auto;
+
+    border-radius: 10px;
+}
+
+.inventoryContainer > h1 {
+    text-align: center;
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #4C2B0D;
+}
+
+.gridCell {
+    background-color: #6c5126;
+    border-top: thick double #5c451c;
+    border-left: thick double #5c451c;
+    border-right: double #866517;
+    border-bottom: double #866517;
+    width: 36px;
+    height: 36px;
+    float: left;
+}
+
+.gridCell:nth-child(1) {
+    border-top-left-radius: 5px;
+}
+
+.gridCell:nth-child(8) {
+    border-top-right-radius: 5px;
+}
+
+.gridCell:nth-child(25) {
+    border-bottom-left-radius: 5px;
+}
+
+.gridCell:nth-child(32) {
+    border-bottom-right-radius: 5px;
+}
+
+#inventory .gridCell:nth-child(8n+1){
+    clear:left;
+}
+
+

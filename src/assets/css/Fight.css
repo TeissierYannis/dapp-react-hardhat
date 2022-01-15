@@ -1,0 +1,12 @@
+.fightContainer {
+  width: 600px;
+  height: 70vh;
+  background-color: antiqueWhite;
+  border: 3px solid #443413;
+  padding: 10px;
+
+  margin-right: auto;
+  margin-left: auto;
+
+  border-radius: 10px;
+}

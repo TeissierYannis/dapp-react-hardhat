@@ -3,6 +3,8 @@ import Nav from "../components/Nav";
 import AnimatedChest from "../components/AnimatedChest";
 import React from "react";
 import Stats from "../components/Stats";
+import Inventory from "../components/Inventory";
+import Fight from "../components/Fight";
 
 class Game extends React.Component {
 
@@ -33,6 +35,8 @@ class Game extends React.Component {
                         </div>
                         : <div className="mainContainer">
                             <Stats/>
+                            <Inventory/>
+                            <Fight/>
                         </div>
                     }
                 </div>
